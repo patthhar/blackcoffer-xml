@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="body"
+            type="String" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="showActions"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_notification">
+
+        <TextView
+            android:id="@+id/time_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="6dp"
+            android:fontFamily="@font/font_medium"
+            android:text="@{time}"
+            android:textColor="@color/textColorTertiary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="11:11" />
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_medium"
+            android:maxLines="2"
+            android:text="@{title}"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/time_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is the title for this notification This is the title for this notification This is the title for this notification" />
+
+        <TextView
+            android:id="@+id/body_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/font_regular"
+            android:text="@{body}"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/button_request_no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_view"
+            app:layout_goneMarginBottom="12dp"
+            tools:text="A generic description or body of notification" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_request_no"
+            visibleIf="@{showActions}"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_rect_rounded_blue_10_outline"
+            android:fontFamily="@font/font_semi_bold"
+            android:gravity="center"
+            android:text="@string/button_decline"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_request_yes"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_request_yes"
+            visibleIf="@{showActions}"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_rect_rounded_blue_10"
+            android:fontFamily="@font/font_semi_bold"
+            android:text="@string/button_accept"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorPrimaryInverse"
+            app:layout_constraintBottom_toBottomOf="@+id/button_request_no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_request_no"
+            app:layout_constraintTop_toTopOf="@+id/button_request_no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
